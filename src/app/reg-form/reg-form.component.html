@@ -1,0 +1,78 @@
+<form [formGroup]="regForm" novalidate >
+
+    <div class="form-group">
+        <label>имя</label>
+        <input class="form-control"  name="firstname" formControlName="firstname" />
+         
+        <div class="alert alert-danger"
+            *ngIf="regForm.controls['firstname'].invalid && regForm.controls['firstname'].dirty">
+          имя должно содержать только буквы
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label>фамилия</label>
+          <input class="form-control"  name="lastname" formControlName="lastname" />
+          <div class="alert alert-danger"
+              *ngIf="regForm.controls['lastname'].invalid && regForm.controls['lastname'].dirty">
+            фамилия должна содержать только буквы
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label>отчество</label>
+            <input class="form-control"  name="fathername" formControlName="fathername" />
+            <div class="alert alert-danger"
+                *ngIf="regForm.controls['fathername'].invalid && regForm.controls['fathername'].dirty">
+              отчество должно содержать только буквы
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label>паспортные данные</label>
+              <input class="form-control"  name="pasport" formControlName="pasport" />
+              <div class="alert alert-danger"
+                  *ngIf="regForm.controls['pasport'].invalid && regForm.controls['pasport'].dirty">
+                введите правильные серию и номер паспорта (10 цифр)
+              </div>
+            </div>
+
+  <div class="form-group">
+      <label>Дата рождения</label>
+      <input class="form-control" type="date" name="year" formControlName="year" />
+       
+      <div class="alert alert-danger"
+          *ngIf="regForm.controls['year'].invalid && regForm.controls['year'].dirty">
+        введите верную дату
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label>логин</label>
+        <input class="form-control"  name="login" formControlName="login" />
+         
+        <div class="alert alert-danger"
+            *ngIf="regForm.controls['login'].invalid && regForm.controls['login'].dirty">
+          логин должен содержать толко строчные латинские буквы
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label>пароль</label>
+          <input class="form-control"  name="password" formControlName="password" />
+          
+          <div class="alert alert-danger"
+              *ngIf="regForm.controls['password'].invalid && regForm.controls['password'].dirty">
+            пароль слишком короткий
+          </div>
+        </div>
+        
+        <div class="alert alert-danger"
+        *ngIf="!this.checklogin">
+      Ползователь с данным логином уже зарегистрирован
+    </div>
+  
+      
+    
+    <button (click)="setLocalstorage(regForm.value.login)" [disabled]="regForm.invalid"> сохранить </button> 
+</form>
